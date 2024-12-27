@@ -9,3 +9,5 @@ def lcm(a, b):
 num1 = 36
 num2 = 48
 print(lcm(num1, num2))
+
+

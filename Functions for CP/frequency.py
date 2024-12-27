@@ -1,3 +1,4 @@
 from collections import *
-a=list(map(int,input().split()))
-d=dict(Counter(a))
+L=list(map(int, input().split()))
+fD=dict(Counter(L))
+print(fD)
