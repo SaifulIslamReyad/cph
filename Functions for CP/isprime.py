@@ -13,3 +13,4 @@ def prime(number):
         i += 6
     return True
 print(prime(22))
+

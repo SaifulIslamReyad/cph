@@ -1,4 +1,4 @@
-a={"name":"saif", "age":23,"wife":["Bu","busra",23],"b":2}
+a={"name":"saif", "age":23,"wife":["Sss","sssssss",23],"b":2}
 print(a)
 # dictionary dont have Index
 print(a["name"])
@@ -6,7 +6,7 @@ print(a.get("phone_number","not found"))
 a["name"]="reyad"
 print(a)
 print("*********")
-a.update({"name":"islam", "age":40,"wife":["Buuuu","busra",23]})
+a.update({"name":"islam", "age":40,"wife":["ssss","sssssss",23]})
 print(a)
 del a["b"]
 print(a)
@@ -15,7 +15,7 @@ a.pop("wife")
 print(a)
 a.popitem() #deletes last item
 a.clear() #deletes all
-x={"name":"saif", "age":23,"wife":["Bu","busra",23],"b":2}
+x={"name":"saif", "age":23,"wife":["Sss","sssssss",23],"b":2}
 print(x.keys())
 print(x.values())
 #how to append?
