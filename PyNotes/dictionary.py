@@ -1,3 +1,7 @@
+d={}
+d[1] = d.get(1, 0) - 1 #means return 0 if not found and decrease it as 1
+d['a'] = d.get('a', 0) + 1  #means return 0 if not found and increase it as 1
+
 a={"name":"saif", "age":23,"wife":["Sss","sssssss",23],"b":2}
 print(a)
 # dictionary dont have Index

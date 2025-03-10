@@ -1,0 +1,2 @@
+def kruskal(n, L) :
+    
