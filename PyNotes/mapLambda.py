@@ -1,10 +1,10 @@
 # map(int, input().split())
 # প্রথমে ফাংশন পরে আইটারেট করা যায় এমন
-l= [1,2,3,4,5]
+L= [1,2,3,4,5]
 def square(x):
     return x*x
-s= list(map(square,l))
-ss= list(map(lambda x: x*x,l))
+s= list(map(square,L))
+ss= list(map(lambda x: x*x,L))
 
 
 a=[1,2,3,4]

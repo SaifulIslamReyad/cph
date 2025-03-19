@@ -1,30 +1,33 @@
-d={}
-d[1] = d.get(1, 0) - 1 #means return 0 if not found and decrease it as 1
-d['a'] = d.get('a', 0) + 1  #means return 0 if not found and increase it as 1
+from icecream import ic
 
-a={"name":"saif", "age":23,"wife":["Sss","sssssss",23],"b":2}
-print(a)
+
+d={}
+d['a'] = d.get('a', 0) + 1  #means return 0 if not found and increase it as 1
+d[1] = d.get(1, 0) - 1 #means return 0 if not found and decrease it as 1
+
+a={"name":"saif", "age":23,"b":2}
+ic(a)
 # dictionary dont have Index
-print(a["name"])
-print(a.get("phone_number","not found"))
+ic(a["name"])
+ic(a.get("phone_number","not found"))
 a["name"]="reyad"
-print(a)
-print("*********")
-a.update({"name":"islam", "age":40,"wife":["ssss","sssssss",23]})
-print(a)
+ic(a)
+
+a.update({"name":"islam", "age":40,"father":["kamal","7-10-71",50]})
+ic(a)
 del a["b"]
-print(a)
-print("*********")
-a.pop("wife")
-print(a)
+ic(a)
+
+a.pop("father")
+ic(a)
 a.popitem() #deletes last item
 a.clear() #deletes all
-x={"name":"saif", "age":23,"wife":["Sss","sssssss",23],"b":2}
-print(x.keys())
-print(x.values())
+x={"name":"saif", "age":23,"father":["Kamal","7-10-71",50],"b":2}
+ic(x.keys())
+ic(x.values())
 #how to append?
 x["app"]="hello"
-print(x)
+ic(x)
 
 
 
@@ -35,10 +38,10 @@ for i in range(int(input)):
     name = input()
     if name not in d:
         d[name] = 0
-        print("OK")
+        ic("OK")
     else:
         d[name] += 1
-        print(name + str(d[name]))
+        ic(name + str(d[name]))
 
 ans = ""
 for key, value in d.items():

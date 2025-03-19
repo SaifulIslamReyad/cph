@@ -31,11 +31,9 @@ class Graph:
                 visited.add(v)
                 mst.append((u, v, edge_weight)) 
                 w += edge_weight
-
                 for next_weight, neighbor in self.adj_list[v]:
                     if neighbor not in visited:
                         heapq.heappush(min_heap, (next_weight, v, neighbor))
-
         return mst , w
 
 
