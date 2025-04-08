@@ -1,42 +1,46 @@
-import heapq as hq
+import heapq
 
+adj_list = {}
 
-class Graph:
-    def __init__(self):
-        self.adj_list = {}
+def add_edge(u, v, weight):
+    if u not in adj_list:
+        adj_list[u] = []
+    if v not in adj_list:
+        adj_list[v] = []
+    adj_list[u].append((weight, v))
+    adj_list[v].append((weight, u))
 
-    def add_edge(self, u, v, w):
-        if u not in self.adj_list:
-            self.adj_list[u] = []
-        if v not in self.adj_list:
-            self.adj_list[v] = []
-        self.adj_list[u].append((w, v))
-        self.adj_list[v].append((w, u))
+def prim_mst_with_cycles(start_node):
+    visited = set()
+    min_heap = []
+    mst = []
+    cycles = []
+    total_cost = 0
 
-    def prims(self, start):
-        L = []
-        weight = 0
-        ans = []
-        visit = set()
-        visit.add(start)
-        for w, x in self.adj_list[start]:
-            hq.heappush(L, (w, x, start))
+    visited.add(start_node)
 
-        while L:
-            ww, xx, yy = hq.heappop(L)
-            if xx not in visit:
-                weight += ww
-                ans.append((xx, yy, ww))
-                visit.add(xx)
-                for www, xxx in self.adj_list[xx]:
-                    hq.heappush(L, (www, xxx, xx))
+    for weight, neighbor in adj_list[start_node]:
+        heapq.heappush(min_heap, (weight, start_node, neighbor))
 
-        return ans, weight
+    while min_heap:
+        weight, u, v = heapq.heappop(min_heap)
 
+        if v not in visited:
+            visited.add(v)
+            mst.append((u, v, weight))
+            total_cost += weight
 
-g = Graph()
+            for next_weight, neighbor in adj_list[v]:
+                if neighbor not in visited:
+                    heapq.heappush(min_heap, (next_weight, v, neighbor))
+        else:
+            # This edge forms a cycle (both u and v already connected)
+            cycles.append((u, v, weight))
 
-ed = [
+    return mst, total_cost, cycles
+
+# Graph edges
+edges = [
     (1, 2, 11),
     (1, 3, 13),
     (1, 5, 2),
@@ -53,9 +57,20 @@ ed = [
     (8, 6, 7),
 ]
 
-for u,v,w in ed:
-    g.add_edge(u,v,w)
+# Build graph
+for u, v, w in edges:
+    add_edge(u, v, w)
 
-ans , weight =  g.prims(1)
+# Run modified Prim’s algorithm
+mst, min_cost, cycles = prim_mst_with_cycles(1)
 
-print(ans, weight)
+# Print MST
+print(f"\n✅ Minimum Cost of MST: {min_cost}")
+print("🌿 Edges in MST:")
+for u, v, w in mst:
+    print(f"{u} - {v} : {w}")
+
+# Print cycle edges
+print("\n🔁 Edges forming cycles:")
+for u, v, w in cycles:
+    print(f"{u} - {v} : {w}")

@@ -30,7 +30,7 @@ class Graph:
                 mst.append((u, v, weight))
                 min_cost += weight
             else:
-                cycle_edges.append((u, v, weight))  # This edge forms a cycle
+                cycle_edges.append((u, v, weight))
 
         return mst, min_cost, cycle_edges
 

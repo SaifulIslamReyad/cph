@@ -1,0 +1,44 @@
+length of bin(n) will have complexity of log(n) and length of (log(n)+1)
+last digit of odd number is always 1 and even is 0
+computer calculates bitwise operation faster than anything
+কোনো বাইনারি নাম্বারের পরের নাম্বার হবে লেফট মোস্ট ০ বিট ১ হবে আর তারপরের সব ১ গুলো ০ হবে; যেমন ১০০ => ১০১ আবার ১০১১ => ১১০০
+for faster calc: 
+1. (n%2) will be (n&1) 
+2. (n//2) will be (n>>1)
+xor :
+    number of 1s even(0) = 0  ;(1^1^0^1^1)= 0 ; (0^0)= 0
+    number of 1s odd(1) = 1  ; (0^1^0^1^1^0^0) = 1
+
+right shift:
+    n>>k means n//(2^k)
+    because:
+    number(abcd) = (a. 2**3 + b. 2**2 + c. 2**1 + d. 2**0)//(2**k)
+    where d vanishes and remains (a. 2**2 + b. 2**1 + c. 2**0)
+
+left shift :
+    n<<k means n . (2**k)
+লেফত শিফট এ ২**৩১ -১ এর থেকে বড় ভেলু হয়ে গেলে ওভারফ্লো করবে। 
+overflow case : 01111111<<1 will make the number negative
+
+
+Not :
+    The ~ (bitwise NOT) operator in bit manipulation is a unary operator 
+    that inverts all the bits of a number. This means:
+        0 becomes 1
+        1 becomes 0
+    ~x = − ( 𝑥 + 1 ) 
+    This formula works because of two’s complement representation in computers.
+    5 in 8-bit binary:
+    00000101
+    Applying ~ (flip all bits):
+    11111010
+    This is the two’s complement representation of -6.
+
+    Thus,
+    -5 in 8-bit binary (two’s complement):
+    11111011
+    Applying ~ (flip all bits):
+    00000100
+    This is the binary representation of 4.
+    Thus,
+    ~(-5) = 4

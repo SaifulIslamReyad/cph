@@ -1,37 +1,43 @@
-class Graph :
-    def __init__(self):
-        self.edges = []
-        self.parent = {}
-    
-    def add_edge(self,u,v,w):
-        self.edges.append((w,u,v))
-        if u not in self.parent:
-            self.parent[u]=u
-        if v not in self.parent:
-            self.parent[v]=v
+edges = []
+parent = {}
 
-    def find(self, x):
-        if self.parent[x]!=x :
-            self.parent[x]= self.find(self.parent[x])
-        return self.parent[x]
-    
-    def union(self,u,v):
-        self.parent[self.find(u)]= self.find(v)
-    
-    def kru(self):
-        ans = []
-        weight= 0
-        self.edges.sort()
-        for w,u,v in self.edges:
-            if self.find(u) != self.find(v):
-                self.union(u,v)
-                ans.append((u,v,w))
-                weight+=w
-        return ans , weight
-    
 
-g= Graph()
-ed = [
+def add_edge(u, v, weight):
+    edges.append((weight, u, v))
+    if u not in parent:
+        parent[u] = u
+    if v not in parent:
+        parent[v] = v
+
+
+def find(node):
+    if parent[node] != node:
+        parent[node] = find(parent[node])
+    return parent[node]
+
+
+def union(u, v):
+    parent[find(v)] = find(u)
+
+
+def kruskal_mst_with_cycle_detection():
+    edges.sort()
+    mst = []
+    min_cost = 0
+    cycle_edges = []
+
+    for weight, u, v in edges:
+        if find(u) != find(v):
+            union(u, v)
+            mst.append((u, v, weight))
+            min_cost += weight
+        else:
+            cycle_edges.append((u, v, weight))
+
+    return mst, min_cost, cycle_edges
+
+
+graph_edges = [
     (1, 2, 11),
     (1, 3, 13),
     (1, 5, 2),
@@ -48,8 +54,11 @@ ed = [
     (8, 6, 7),
 ]
 
-for i,j,k in ed:
-    g.add_edge(i,j,k)
+for u, v, w in graph_edges:
+    add_edge(u, v, w)
 
-ans , weight =g.kru()
-print(ans, weight)
+mst, min_cost, cycle_edges = kruskal_mst_with_cycle_detection()
+
+print(f"Minimum Cost of MST: {min_cost}")
+print("Edges in MST:", mst)
+print("Edges forming cycles:", cycle_edges)

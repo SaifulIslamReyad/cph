@@ -37,7 +37,6 @@ class Graph:
         return mst , w
 
 
-g = Graph()
 
 # edges = [(1, 2, 1), (1, 3, 10), (2, 4, 1), (2, 5, 1), (3, 6, 1), (3, 7, 1), (7, 5, 2), (6, 4, 1)]
 edges = [
@@ -56,6 +55,7 @@ edges = [
     (7, 6, 21),
     (8, 6, 7),
 ]
+g = Graph()
 for u, v, w in edges:
     g.add_edge(u, v, w)
 
