@@ -1,44 +1,45 @@
 import heapq
 
-class Graph:
-    def __init__(self):
-        self.adj_list = {}
+adj_list = {}
 
-    def add_edge(self, u, v, weight):
-        if u not in self.adj_list:
-            self.adj_list[u] = []
-        if v not in self.adj_list:
-            self.adj_list[v] = []
-        self.adj_list[u].append((weight, v))
-        self.adj_list[v].append((weight, u))
+def add_edge(u, v, weight):
+    if u not in adj_list:
+        adj_list[u] = []
+    if v not in adj_list:
+        adj_list[v] = []
+    adj_list[u].append((weight, v))
+    adj_list[v].append((weight, u))
 
+def prim_mst_with_cycles(start_node):
+    visited = set()
+    min_heap = []
+    mst = []
+    cycles = []
+    total_cost = 0
 
-    def prim_mst(self, start_node):
-        visited = set()
-        min_heap = []
-        mst = []
-        w= 0
+    visited.add(start_node)
 
-        visited.add(start_node)
-        
-        for edge_weight, neighbor in self.adj_list[start_node]:
-            heapq.heappush(min_heap, (edge_weight, start_node, neighbor))  
+    for weight, neighbor in adj_list[start_node]:
+        heapq.heappush(min_heap, (weight, start_node, neighbor))
 
-        while min_heap:
-            edge_weight, u, v = heapq.heappop(min_heap)
+    while min_heap:
+        weight, u, v = heapq.heappop(min_heap)
 
-            if v not in visited:  
-                visited.add(v)
-                mst.append((u, v, edge_weight)) 
-                w += edge_weight
-                for next_weight, neighbor in self.adj_list[v]:
-                    if neighbor not in visited:
-                        heapq.heappush(min_heap, (next_weight, v, neighbor))
-        return mst , w
+        if v not in visited:
+            visited.add(v)
+            mst.append((u, v, weight))
+            total_cost += weight
 
+            for next_weight, neighbor in adj_list[v]:
+                if neighbor not in visited:
+                    heapq.heappush(min_heap, (next_weight, v, neighbor))
+        else:
+            # This edge forms a cycle (both u and v already connected)
+            cycles.append((u, v, weight))
 
+    return mst, total_cost, cycles
 
-# edges = [(1, 2, 1), (1, 3, 10), (2, 4, 1), (2, 5, 1), (3, 6, 1), (3, 7, 1), (7, 5, 2), (6, 4, 1)]
+# Graph edges
 edges = [
     (1, 2, 11),
     (1, 3, 13),
@@ -55,11 +56,70 @@ edges = [
     (7, 6, 21),
     (8, 6, 7),
 ]
-g = Graph()
+
+# Build graph
 for u, v, w in edges:
-    g.add_edge(u, v, w)
+    add_edge(u, v, w)
 
-mst, min_cost = g.prim_mst(1) 
+# Run modified Prim’s algorithm
+mst, min_cost, cycles = prim_mst_with_cycles(1)
 
-print(f"Minimum Cost of MST: {min_cost}")
-print("Edges in MST:", mst)
+# Print MST
+print(f"\n✅ Minimum Cost of MST: {min_cost}")
+print("🌿 Edges in MST:")
+for u, v, w in mst:
+    print(f"{u} - {v} : {w}")
+
+# Print cycle edges
+print("\n🔁 Edges forming cycles:")
+for u, v, w in cycles:
+    print(f"{u} - {v} : {w}")
+
+
+
+# **Algorithm** PrimMSTWithCycles(start_node, adj_list, mst, cycles)
+
+# // Computes the Minimum Spanning Tree (MST) of a connected, undirected graph using Prim's algorithm,
+# // while also detecting and collecting cycles formed by rejected edges.
+# // Returns:
+# //   - mst: List of edges in the MST as tuples (u, v, weight)
+# //   - total_cost: Sum of weights in the MST
+# //   - cycles: List of edges that form cycles when rejected, as tuples (u, v, weight)
+
+# {
+#     visited := empty set;  
+#     min_heap := empty priority queue;  
+#     mst := empty list;  
+#     cycles := empty list;  
+#     total_cost := 0;  
+
+#     Add start_node to visited;  
+
+#     // Initialize heap with edges from start_node
+#     for each (weight, neighbor) in adj_list[start_node] do  
+#         Insert (weight, start_node, neighbor) into min_heap;  
+
+#     while min_heap is not empty do  
+#     {  
+#         (weight, u, v) := Extract minimum from min_heap;  
+
+#         if v not in visited then  
+#         {  
+#             Add v to visited;  
+#             Append (u, v, weight) to mst;  
+#             total_cost := total_cost + weight;  
+
+#             // Add edges from v to the heap
+#             for each (next_weight, neighbor) in adj_list[v] do  
+#                 if neighbor not in visited then  
+#                     Insert (next_weight, v, neighbor) into min_heap;  
+#         }  
+#         else  
+#         {  
+#             // Edge forms a cycle (both endpoints already in MST)
+#             Append (u, v, weight) to cycles;  
+#         }  
+#     }  
+
+#     return (mst, total_cost, cycles);  
+# }

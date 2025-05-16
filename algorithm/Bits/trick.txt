@@ -5,10 +5,13 @@ computer calculates bitwise operation faster than anything
 for faster calc: 
 1. (n%2) will be (n&1) 
 2. (n//2) will be (n>>1)
+3. (n//2**k) will be (n>>k)
+--> 4 এর গুনিতক গুলোর শেষে বাইনারি 00 and for 8 er gunitok gulor seshe 000
 xor :
     number of 1s even(0) = 0  ;(1^1^0^1^1)= 0 ; (0^0)= 0
     number of 1s odd(1) = 1  ; (0^1^0^1^1^0^0) = 1
-
+    0 ^ x = x
+    1 ^ x = ~x
 right shift:
     n>>k means n//(2^k)
     because:
@@ -42,3 +45,5 @@ Not :
     This is the binary representation of 4.
     Thus,
     ~(-5) = 4
+
+

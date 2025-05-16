@@ -1,7 +1,10 @@
-def ones_complement(n, bits=8): return (~n) & ((1 << bits) - 1)  # Masking to keep only 'bits' number of bits
+from icecream import ic
 
-# Example: 8-bit 1's complement
-num = 5  # Binary: 00000101
-bits = 8
-result = ones_complement(num, bits)
-print(f"1's complement of {num} (binary {num:08b}) is {result} (binary {result:08b})")
+def return_only_n_bits(x,n):
+    return x & ((1<<n)-1)
+
+def ones_complement(n, bits=8): 
+    # Masking to keep only 'bits' number of bits
+    return return_only_n_bits(~n)  
+
+ic( ones_complement(5))
