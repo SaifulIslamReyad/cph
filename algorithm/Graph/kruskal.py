@@ -9,7 +9,6 @@ def add_edge(u, v, weight):
     if v not in parent:
         parent[v] = v
 
-
 def find(node):
     if parent[node] != node:
         parent[node] = find(parent[node])

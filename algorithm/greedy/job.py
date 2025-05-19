@@ -19,9 +19,10 @@ def job_sequencing(jobs):
                 break
 
     return job_sequence, total_profit
+
+
+
 #  (Job ID, Deadline, Profit)
-
-
 jobs = [
     ('A', 2, 100),
     ('B', 1, 19),
