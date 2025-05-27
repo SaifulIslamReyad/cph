@@ -175,4 +175,19 @@ for i in L[1:]:
     print(reverse_bits2(i), end=" ")
 
 
+def calculate_xor_from_1_to_n(n):
+    # n= 100
+    # for i in range(1,n+1):
+    #     c=0
+    #     for j in range(1,i+1):
+    #         c^=j
+    #     print(f"for {i=} ,{c= }") 
+    # after finding the pattern 
+    if n %4== 0 : return n
+    if n %4== 1 : return 1
+    if n %4== 2 : return n+1
+    if n %4== 3 : return 0
 
+def calculate_xor_of_range(right, left=1):
+    return calculate_xor_from_1_to_n(right) ^ calculate_xor_from_1_to_n(left)
+    # as 1^2^3^ (1^2^3^x^y) = x^y
