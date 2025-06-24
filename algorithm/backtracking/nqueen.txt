@@ -1,0 +1,25 @@
+Function solveNQueens(n):
+    Create an empty board of size n × n
+    Call placeQueen(row = 0)
+
+
+Function placeQueen(row):
+    If row == n:
+        Store the current board as a valid solution
+        Return
+
+    For each column from 0 to n - 1:
+        If it is safe to place a queen at (row, column):
+            Place the queen at (row, column)
+            Call placeQueen(row + 1)
+            Remove the queen from (row, column)  ← Backtrack
+
+
+Function isSafe(row, column):
+    Check same column above
+    Check upper-left diagonal
+    Check upper-right diagonal
+    If no queen is attacking:
+        Return True
+    Else:
+        Return False

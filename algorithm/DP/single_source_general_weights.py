@@ -16,8 +16,8 @@ def bellman_ford(n, edges, source):
         if dist[u] != float('inf') and dist[u] + w < dist[v]:
             print("⚠️ Negative weight cycle detected!")
             return None, None
-
     return dist, parent
+
 
 def print_paths(dist, parent, source, n):
     print(f"\n📌 Shortest distances from node {source}:")
@@ -38,7 +38,7 @@ def print_paths(dist, parent, source, n):
 
 # -------------------------------
 # Example usage
-
+# u v w
 edges = [
     (1, 2, 11),
     (1, 3, 13),

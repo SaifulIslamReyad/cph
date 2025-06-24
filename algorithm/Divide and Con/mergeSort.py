@@ -38,3 +38,45 @@ L = [38, 27, 43, 3, 9, 82, 10]
 print("Original Array:", L)
 sorted_array = merge_sort(L)
 print("Sorted Array:", sorted_array)
+
+
+
+
+def merge(L, low, mid, high):
+    result = []
+    left_index = low
+    right_index = mid + 1
+
+    while left_index <= mid and right_index <= high:
+        if L[left_index] < L[right_index]:
+            result.append(L[left_index])
+            left_index += 1
+        else:
+            result.append(L[right_index])
+            right_index += 1
+
+    while left_index <= mid:
+        result.append(L[left_index])
+        left_index += 1
+
+    while right_index <= high:
+        result.append(L[right_index])
+        right_index += 1
+
+    # Copy result back into original list
+    for i in range(len(result)):
+        L[low + i] = result[i]
+
+
+def merge_sort(L, low, high):
+    if low < high:
+        mid = (low + high) // 2
+        merge_sort(L, low, mid)
+        merge_sort(L, mid + 1, high)
+        merge(L, low, mid, high)
+
+# Example usage
+L = [38, 27, 43, 3, 9, 82, 10]
+print("Original Array:", L)
+merge_sort(L, 0, len(L) - 1)
+print("Sorted Array:", L)

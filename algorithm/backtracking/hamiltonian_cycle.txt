@@ -1,0 +1,28 @@
+Function hamiltonianCycle(graph, n):
+    Create a path[] array of size n, initialized with -1
+    Set path[0] = 0  ← Start at vertex 0
+    Call solve(pos = 1)
+
+Function solve(pos):
+    If pos == n:
+        If there is an edge from path[n - 1] to path[0]:
+            Return True  ← Cycle completed
+        Else:
+            Return False
+
+    For each vertex v from 1 to n - 1:
+        If v is safe to add at position pos:
+            path[pos] = v
+            If solve(pos + 1):
+                Return True
+            path[pos] = -1  ← Backtrack
+
+    Return False  ← No vertex can be placed at this position
+
+
+Function isSafe(v, pos):
+    If v is not connected to path[pos - 1]:
+        Return False
+    If v is already in path[0...pos-1]:
+        Return False
+    Return True

@@ -1,0 +1,25 @@
+Function solveGraphColoring(graph, m):
+    n = number of vertices
+    Create color[] of size n, initialized to 0
+    Call colorNode(node = 0)
+
+Function colorNode(node):
+    If node == n:
+        A valid coloring is found → return True
+
+    For each color c from 1 to m:
+        If it is safe to assign color c to this node:
+            Assign color[node] = c
+            If colorNode(node + 1) returns True:
+                Return True
+            Unassign color[node] (Backtrack)
+
+    Return False  // No valid color found for this node
+
+Function isSafe(node, color[]):
+    For each neighbor of node:
+        If color[neighbor] == color[node]:
+            Return False
+    Return True
+
+

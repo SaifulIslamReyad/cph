@@ -24,7 +24,6 @@ def floyd_warshall(n, edges):
         if dist[i][i] < 0:
             print("⚠️ Negative weight cycle detected!")
             return None, None
-
     return dist, next_node
 
 def print_apsp(dist, n):
