@@ -60,3 +60,17 @@ def nthFibo(n):
     if n==2: return 1
     return nthFibo(n-1)+ nthFibo(n-2)
 print(nthFibo(9))
+
+def makeListfromNto1(n):
+    if n==0: return []
+    return [n] + makeListfromNto1(n-1) 
+print(*makeListfromNto1(int(input())))
+
+def printNumbersFromNo1(n):
+    print(n , end = " ")
+    if n>1: printNumbersFromNo1(n-1)
+
+def fib(n):
+    if n<=2: return n-1
+    return fib(n-1)+ fib(n-2)
+print(fib(int(input())))

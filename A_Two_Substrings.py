@@ -1,0 +1,10 @@
+from icecream import ic
+s=input()
+x= s.count("AB")
+y = s.count("BA")
+z= s.count("ABA") + s.count("BAB") 
+z2= s.count("ABA") + s.count("BAB") - s.count("ABAB")  - s.count("BABA")
+z3 = s.count("ABABA")  + s.count("BABAB")
+ic(x,y,z,z2,z3)
+if (x>0 and y>0 and x+y > 2*z) or z2>=2 or z3>=1 : print("YES") 
+else: print("NO")
