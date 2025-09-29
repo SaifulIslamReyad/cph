@@ -14,3 +14,9 @@ print(dict)
 ic.disable()
 ic(dict)
 ic.enable()
+
+
+tamim= 10
+print("tamim=",tamim)
+ic(tamim)
+print(f"{tamim=}")
