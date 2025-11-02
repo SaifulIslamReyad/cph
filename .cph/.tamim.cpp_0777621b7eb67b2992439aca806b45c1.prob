@@ -1,1 +1,0 @@
-{"name":"Local: tamim","url":"d:\\Coding_NoteBook\\cph\\tamim.cpp","tests":[{"id":1759165618826,"input":"3\n6\n2 2 1 2 1 2\n3\n1 2 1\n4\n1 1 1 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding_NoteBook\\cph\\tamim.cpp","group":"local","local":true}

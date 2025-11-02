@@ -1,3 +1,6 @@
+কোনো সংখ্যাকে এন্ড করলে উহা ছোট হবে , বড় হবেনা ,  x &= something makes x smaller
+simmilarly y |= something makes y bigger
+
 length of bin(n) will have complexity of log(n) and length of (log(n)+1)
 last digit of odd number is always 1 and even is 0
 computer calculates bitwise operation faster than anything
