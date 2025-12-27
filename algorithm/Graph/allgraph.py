@@ -283,6 +283,30 @@ def get_node_level(graph, start, target):
     return -1  # Target node not reachable
 
 
+def count_provinces(graph):
+    """
+    Count the number of provinces (connected components) in the graph.
+    A province is a group of directly or indirectly connected nodes.
+
+    Time: O(V+E), Space: O(V)
+    """
+    visited = set()
+    provinces = 0
+
+    def dfs(node):
+        visited.add(node)
+        for neighbor, weight in graph.adj_list[node]:
+            if neighbor not in visited:
+                dfs(neighbor)
+
+    for vertex in graph.vertices:
+        if vertex not in visited:
+            dfs(vertex)
+            provinces += 1
+
+    return provinces
+
+
 # ==================== EXAMPLE USAGE ====================
 
 if __name__ == "__main__":
@@ -311,11 +335,23 @@ if __name__ == "__main__":
     print("BFS Level Order:", bfs_level_order(g, 1))
     print("Cycle Detection (Undirected):", dfs_detect_cycle_undirected(g))
     print("Connected Components:", connected_components_dfs(g))
+    print("Number of Provinces:", count_provinces(g))
+
+    # Example with multiple disconnected components
+    g2 = Graph()
+    # Province 1: nodes 1-3
+    g2.add_edge(1, 2)
+    g2.add_edge(2, 3)
+    # Province 2: nodes 4-5
+    g2.add_edge(4, 5)
+    # Province 3: node 6 (isolated)
+    g2.vertices.add(6)
+
+    print("\nGraph with 3 provinces:", count_provinces(g2))  # Output: 3
 
     # Example usage of get_node_level
-    edges = [
-        (1, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 6)
-    ]
-    g.add_edges_from_list(edges)
+    g3 = Graph()
+    edges = [(1, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 6)]
+    g3.add_edges_from_list(edges)
 
-    print("Level of node 6 from node 1:", get_node_level(g, 1, 6))  # Example output: 3
+    print("Level of node 6 from node 1:", get_node_level(g3, 1, 6))  # Example output: 3

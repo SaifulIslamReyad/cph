@@ -11,6 +11,7 @@ def convert_to_bin(x):
 # print(f"{convert_to_bin(5) = }")
 
 
+
 def convert_to_dec(s):
     s= s[::-1] #n
     n = len(s) 
@@ -83,3 +84,5 @@ print(bin(-6))
 # ```
 
 # Would you like a visualization of how two's complement works?
+
+# 1010101010

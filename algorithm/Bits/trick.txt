@@ -4,7 +4,7 @@ simmilarly y |= something makes y bigger
 length of bin(n) will have complexity of log(n) and length of (log(n)+1)
 last digit of odd number is always 1 and even is 0
 computer calculates bitwise operation faster than anything
-কোনো বাইনারি নাম্বারের পরের নাম্বার হবে লেফট মোস্ট ০ বিট ১ হবে আর তারপরের সব ১ গুলো ০ হবে; যেমন ১০০ => ১০১ আবার ১০১১ => ১১০০
+কোনো বাইনারি নাম্বারের পরের নাম্বার হবে right মোস্ট ০ বিট ১ হবে আর তারপরের সব ১ গুলো ০ হবে; যেমন ১০০ => ১০১ আবার ১০১১ => ১১০০
 for faster calc: 
 1. (n%2) will be (n&1) 
 2. (n//2) will be (n>>1)

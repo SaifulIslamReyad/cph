@@ -121,6 +121,7 @@ def find_single_element2(L): #all triple one single
         if c%3==1 : 
             ans = ans | (1<<i)
     return ans
+
 # 0001
 # 0001
 # 0001

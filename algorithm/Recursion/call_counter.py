@@ -8,3 +8,6 @@ L=[]
 reyad(5, counter, L)
 print("so the total count is ",counter[0])
 print(*L)
+
+
+# pass by reference

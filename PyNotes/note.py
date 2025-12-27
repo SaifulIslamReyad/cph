@@ -27,6 +27,36 @@ a="jelloooo"
 print(a) #Output will be "jelloooo"
 
 
-L= [[2,3,4],[60,80],[3,4,5]]
-print(sorted(L))
-# [[2, 3, 4], [3, 4, 5], [60, 80]]
+L = [[2,3,4],[60,80],[3,4,5]]
+# sort by length (shorter sublists first)
+print(sorted(L, key=len))  # [[60, 80], [2, 3, 4], [3, 4, 5]]
+
+
+
+
+
+data = [[1, 3], [1, 2], [2, 1]]
+# Sort first by first element, then by second element
+data.sort(key=lambda x: (x[0], x[1]))
+print(data)
+# Output: [[1, 2], [1, 3], [2, 1]]
+
+
+
+
+
+
+
+
+
+data = [[3, 2], [1, 4], [2, 3]]
+
+# Sort by second element
+sorted_data = sorted(data, key=lambda x: x[1])
+print(sorted_data)
+
+data = [[3, 2], [1, 4], [2, 3]]
+
+# Sort in place by first element
+data.sort(key=lambda x: x[0])
+print(data)
