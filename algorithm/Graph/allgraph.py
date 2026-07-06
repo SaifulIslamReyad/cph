@@ -15,16 +15,6 @@ class Graph:
         if not directed:
             self.adj_list[v].append((u, w))
 
-    def add_edges_from_list(self, edges, directed=False):
-        """Add multiple edges from list of tuples"""
-        for edge in edges:
-            if len(edge) == 2:  # unweighted
-                u, v = edge
-                self.add_edge(u, v, 1, directed)
-            else:  # weighted
-                u, v, w = edge
-                self.add_edge(u, v, w, directed)
-
 
 # ==================== DFS FUNCTIONS ====================
 
@@ -329,7 +319,8 @@ if __name__ == "__main__":
         (8, 6, 7),
     ]
 
-    g.add_edges_from_list(edges)
+    for u,v,w in edges:
+        g.add_edge(u,v,w)
 
     print("DFS Recursive:", dfs_recursive(g, 1))
     print("BFS Level Order:", bfs_level_order(g, 1))
